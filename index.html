@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملف أعمال المطور | يوسف الشريف</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #111827;
+            --bg-light: #1f2937;
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --accent-color: #3b82f6;
+            --accent-hover: #2563eb;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            scroll-behavior: smooth;
+        }
+        .section-title {
+            position: relative;
+            padding-bottom: 0.75rem;
+            margin-bottom: 3rem;
+            display: inline-block;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+        .skill-card, .timeline-item {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+        .skill-card:hover, .timeline-item:hover {
+            transform: translateY(-5px);
+            background-color: #374151;
+        }
+        .project-card {
+            transition: box-shadow 0.3s ease;
+        }
+        .project-card:hover {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 1.25rem;
+            width: 4px;
+            background-color: #374151;
+            transform: translateX(50%);
+        }
+        .timeline-item {
+            position: relative;
+            padding-right: 4rem;
+        }
+        .timeline-dot {
+            position: absolute;
+            top: 0.25rem;
+            right: 0;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            border: 4px solid var(--bg-light);
+        }
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .timeline::before {
+                right: 0.75rem;
+            }
+            .timeline-item {
+                padding-right: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="bg-gray-800/80 backdrop-blur-sm sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold accent-text">يوسف الشريف</a>
+            <div class="hidden md:flex space-x-8 space-x-reverse font-semibold">
+                <a href="#about" class="hover:text-blue-400">من أنا</a>
+                <a href="#experience" class="hover:text-blue-400">الخبرات</a>
+                <a href="#skills" class="hover:text-blue-400">المهارات</a>
+                <a href="#portfolio" class="hover:text-blue-400">أعمالي</a>
+                <a href="#contact" class="hover:text-blue-400">تواصل معي</a>
+            </div>
+            <a href="#contact" class="bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300" style="background-color: var(--accent-color);">
+                وظفني
+            </a>
+        </nav>
+    </header>
+
+    <section class="py-20 md:py-32 px-6">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl md:text-6xl font-black mb-4">مهندس حاسوب ومطوّر ويب متكامل</h1>
+            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">متخصص في بناء تطبيقات ويب حديثة وتفاعلية من الفكرة إلى الإطلاق، مع خبرة في إدارة تقنية المعلومات والتسويق الرقمي.</p>
+            <div class="flex justify-center space-x-4 space-x-reverse">
+                <a href="#portfolio" class="bg-blue-500 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-600 transition duration-300 text-lg" style="background-color: var(--accent-color);">شاهد أعمالي</a>
+                <a href="./Yousef Mahmoud CV.pdf" target="_blank" class="bg-gray-700 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-600 transition duration-300 text-lg">تحميل السيرة الذاتية</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-6 bg-gray-800">
+        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="section-title text-3xl font-bold">من أنا؟</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4">أنا يوسف الشريف، مهندس حاسوب ومطوّر ويب شغوف، متخصص في بناء تطبيقات متكاملة باستخدام حزمة MERN Stack. أجمع بين المهارات التقنية في الواجهات الأمامية (Frontend) والخلفية (Backend) لتقديم حلول شاملة ومبتكرة.</p>
+                <p class="text-lg text-gray-300 leading-relaxed">أؤمن بأن أفضل المنتجات الرقمية هي التي تجمع بين الكود النظيف، التصميم الجذاب، وتجربة المستخدم السلسة. مشروعي الأبرز، <b>PC Master</b>، هو دليل على قدرتي على تحويل فكرة معقدة إلى منصة حقيقية، قوية، وقابلة للنمو.</p>
+            </div>
+            <div class="text-center">
+                <div class="bg-gray-700 p-8 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold mb-4">ما الذي أقدمه؟</h3>
+                    <ul class="text-right space-y-3">
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 ml-3"></i> بناء تطبيقات ويب متكاملة من الصفر.</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 ml-3"></i> تطوير واجهات خلفية (APIs) آمنة وقوية.</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 ml-3"></i> تصميم واجهات أمامية تفاعلية ومتجاوبة.</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 ml-3"></i> إدارة البنية التحتية للشبكات والخوادم.</li>
+                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 ml-3"></i> تقديم خدمات الدعم الفني وحل المشكلات.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="section-title text-3xl font-bold text-center">الخبرات العملية والتعليم</h2>
+            <div class="grid md:grid-cols-2 gap-16 mt-12">
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 text-center">الخبرة العملية</h3>
+                    <div class="relative timeline">
+                        <div class="timeline-item mb-12">
+                            <div class="timeline-dot"></div>
+                            <h4 class="font-bold text-xl">مدير تقنية المعلومات والتسويق الرقمي</h4>
+                            <p class="font-semibold text-blue-400">مطعم ذا جلوبال فيو - مكة المكرمة</p>
+                            <p class="text-sm text-gray-400 mb-2">يناير 2022 - حتى الآن</p>
+                            <p class="text-gray-300">إدارة البنية التحتية التقنية، وتصميم وإدارة الحملات التسويقية الإلكترونية وتصميم الشعارات والمطبوعات.</p>
+                        </div>
+                        <div class="timeline-item mb-12">
+                            <div class="timeline-dot"></div>
+                            <h4 class="font-bold text-xl">مدير تقنية المعلومات ووسائل التواصل</h4>
+                            <p class="font-semibold text-blue-400">شركة آسيا واحة للسياحة - مكة المكرمة</p>
+                            <p class="text-sm text-gray-400 mb-2">2022 - 2023 (مستمر عن بعد)</p>
+                            <p class="text-gray-300">إدارة الأنظمة التقنية والموقع الإلكتروني، تقديم الدعم الفني، وتطوير المحتوى الرقمي.</p>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h4 class="font-bold text-xl">مبرمج ومصمم مستقل</h4>
+                            <p class="font-semibold text-blue-400">منصات العمل الحر (Upwork, Fiverr, مستقل)</p>
+                            <p class="text-sm text-gray-400 mb-2">2018 - 2024</p>
+                            <p class="text-gray-300">تصميم وتطوير مواقع وتطبيقات، تصميم هويات بصرية، وتقديم خدمات الدعم الفني.</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-8 text-center">التعليم والشهادات</h3>
+                    <div class="space-y-8">
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <h4 class="font-bold text-xl">بكالوريوس هندسة الحاسوب</h4>
+                            <p class="text-blue-400">المعهد العالي للهندسة بمدينة العبور (2023 - حتى الآن)</p>
+                        </div>
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <h4 class="font-bold text-xl">دبلوم تخصص الحاسوب</h4>
+                            <p class="text-blue-400">مدرسة سمارت للحاسبات (2021 - 2023)</p>
+                        </div>
+                        <div class="bg-gray-800 p-6 rounded-lg">
+                            <h4 class="font-bold text-xl">دورات وشهادات احترافية</h4>
+                            <p class="text-gray-300">حاصل على شهادات ودورات متعددة من منصات عالمية مثل Cisco (CCNA, CCNP), CompTIA (A+, Network+), Microsoft (AZ-900), و AWS.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="skills" class="py-20 px-6 bg-gray-800">
+        <div class="container mx-auto text-center">
+            <h2 class="section-title text-3xl font-bold">المهارات التقنية</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto mt-12">
+                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-python text-4xl text-yellow-400 mb-3"></i><h3 class="font-semibold text-lg">Python</h3></div>
+                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-java text-4xl text-red-500 mb-3"></i><h3 class="font-semibold text-lg">Java</h3></div>
+                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-js-square text-4xl text-yellow-300 mb-3"></i><h3 class="font-semibold text-lg">JavaScript</h3></div>
+                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-react text-4xl text-blue-400 mb-3"></i><h3 class="font-semibold text-lg">React.js</h3></div>
+                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-node-js text-4xl text-green-400 mb-3"></i><h3 class="font-semibold text-lg">Node.js</h3></div>
+                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fas fa-database text-4xl text-green-500 mb-3"></i><h3 class="font-semibold text-lg">MongoDB & MySQL</h3></div>
+                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i><h3 class="font-semibold text-lg">HTML5</h3></div>
+                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-css3-alt text-4xl text-blue-500 mb-3"></i><h3 class="font-semibold text-lg">CSS3 & Tailwind</h3></div>
+                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fas fa-network-wired text-4xl text-purple-400 mb-3"></i><h3 class="font-semibold text-lg">Cisco (CCNA/CCNP)</h3></div>
+                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-aws text-4xl text-orange-400 mb-3"></i><h3 class="font-semibold text-lg">AWS Cloud</h3></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="section-title text-3xl font-bold text-center">أبرز أعمالي</h2>
+            <div class="project-card mt-12 bg-gray-800 rounded-xl overflow-hidden md:flex items-center shadow-2xl border border-gray-700">
+                <div class="md:w-1/2 p-8">
+                    <h3 class="text-3xl font-black mb-3">منصة PC Master</h3>
+                    <p class="text-gray-400 leading-relaxed mb-6">
+                        مشروع متكامل لبناء وتخصيص أجهزة الكمبيوتر، تم بناؤه من الصفر باستخدام حزمة MERN Stack. يقدم المشروع حلاً شاملاً للمستخدمين بدءًا من اقتراح التجميعات عبر مساعد ذكي، وانتهاءً بالشراء والاطلاع على معرض أعمال المجتمع.
+                    </p>
+                    <h4 class="font-bold text-lg mb-4">أهم الميزات التي قمت بتطويرها:</h4>
+                    <ul class="space-y-3 mb-6">
+                        <li class="flex"><i class="fas fa-check text-blue-400 mt-1 ml-3"></i><span><b>أداة بناء ذكية:</b> مع فحص توافق فوري بين القطع ومحاكاة ثلاثية الأبعاد.</span></li>
+                        <li class="flex"><i class="fas fa-check text-blue-400 mt-1 ml-3"></i><span><b>مساعد ذكي (AI):</b> يقترح تجميعات بناءً على ميزانية المستخدم واحتياجاته.</span></li>
+                        <li class="flex"><i class="fas fa-check text-blue-400 mt-1 ml-3"></i><span><b>نظام مصادقة متكامل:</b> تسجيل، دخول، وتحديث ملفات المستخدمين باستخدام JWT.</span></li>
+                        <li class="flex"><i class="fas fa-check text-blue-400 mt-1 ml-3"></i><span><b>لوحة تحكم للمدير:</b> لإدارة المنتجات، الطلبات، والمستخدمين.</span></li>
+                        <li class="flex"><i class="fas fa-check text-blue-400 mt-1 ml-3"></i><span><b>مجتمع تفاعلي:</b> معرض للتجميعات وسوق للمبدعين.</span></li>
+                    </ul>
+                    <div class="flex space-x-4 space-x-reverse">
+                        <a href="https://sought-polite-rattler.ngrok-free.app" target="_blank" class="bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600 transition" style="background-color: var(--accent-color);">
+                            <i class="fas fa-external-link-alt mr-2"></i> شاهد المشروع
+                        </a>
+                        <a href="https://github.com/KINGMAN8888/my-pcgaming-website.git" target="_blank" class="bg-gray-700 text-white font-bold py-2 px-6 rounded-full hover:bg-gray-600 transition">
+                            <i class="fab fa-github mr-2"></i> اطلع على الكود
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 p-8 bg-gray-900">
+                    <img src="./images/logo.png" alt="PC Master Project" class="rounded-lg shadow-xl w-full">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 px-6 text-center bg-gray-800">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold mb-4">هل لديك فكرة مشروع؟</h2>
+            <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">أنا جاهز لمساعدتك في تحويل فكرتك إلى حقيقة. سواء كنت تحتاج إلى تطبيق ويب متكامل، أو موقع تجارة إلكترونية، أو منصة مخصصة، يمكننا العمل معًا لتحقيق أهدافك.</p>
+            <a href="mailto:yousefmahmoudsaber@gmail.com" class="bg-blue-500 text-white font-bold text-xl py-4 px-10 rounded-full hover:bg-blue-600 transition duration-300 inline-block" style="background-color: var(--accent-color);">
+                <i class="fas fa-envelope mr-3"></i> تواصل معي
+            </a>
+            <div class="mt-8 text-lg">
+                <p class="text-gray-400">أو تواصل عبر الهاتف: <span dir="ltr">+20 109 758 5951</span></p>
+            </div>
+        </div>
+    </section>
+    
+    <footer class="bg-gray-900 py-6">
+        <div class="container mx-auto text-center text-gray-400">
+            <p>&copy; 2025 - جميع الحقوق محفوظة لـ يوسف الشريف</p>
+        </div>
+    </footer>
+
+    <script>
+        // Tailwind CSS configuration for dark mode
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-dark': '#111827',
+                        'bg-light': '#1f2937',
+                        'text-primary': '#f3f4f6',
+                        'text-secondary': '#9ca3af',
+                        'accent-color': '#3b82f6',
+                        'accent-hover': '#2563eb'
+                    }
+                }
+            }
+        };
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+        // Optional: Highlight active section in navigation (if sidebar exists)
+        // ...existing code...
+    </script>
+</body>
+</html>
