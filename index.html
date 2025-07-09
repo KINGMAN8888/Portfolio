@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,294 +12,378 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #111827;
-            --bg-light: #1f2937;
-            --text-primary: #f3f4f6;
-            --text-secondary: #9ca3af;
+            --bg-dark: #0d1117; /* لون أغمق وأكثر احترافية */
+            --bg-light: #161b22;
+            --bg-card: #161b22;
+            --text-primary: #e6edf3;
+            --text-secondary: #8b949e;
             --accent-color: #3b82f6;
             --accent-hover: #2563eb;
+            --glow-color: rgba(59, 130, 246, 0.4);
+            --border-color: rgba(139, 148, 158, 0.3);
         }
+
         body {
             font-family: 'Cairo', sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-primary);
             scroll-behavior: smooth;
         }
-        .section-title {
-            position: relative;
-            padding-bottom: 0.75rem;
-            margin-bottom: 3rem;
-            display: inline-block;
-        }
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 60%;
-            height: 4px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
-        }
-        .skill-card, .timeline-item {
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-        .skill-card:hover, .timeline-item:hover {
-            transform: translateY(-5px);
-            background-color: #374151;
-        }
-        .project-card {
-            transition: box-shadow 0.3s ease;
-        }
-        .project-card:hover {
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.3);
-        }
-        .timeline::before {
-            content: '';
-            position: absolute;
+
+        #tsparticles {
+            position: fixed;
             top: 0;
-            bottom: 0;
-            right: 1.25rem;
-            width: 4px;
-            background-color: #374151;
-            transform: translateX(50%);
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
         }
-        .timeline-item {
-            position: relative;
-            padding-right: 4rem;
-        }
-        .timeline-dot {
-            position: absolute;
-            top: 0.25rem;
-            right: 0;
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            background-color: var(--accent-color);
-            border: 4px solid var(--bg-light);
-        }
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .timeline::before {
-                right: 0.75rem;
+        
+        /* تأثير الحركة عند التحميل */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
             }
-            .timeline-item {
-                padding-right: 2.5rem;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+        }
+        
+        /* تأخيرات للحركة المتتابعة */
+        .hero-image { animation-delay: 0.2s; }
+        .hero-title { animation-delay: 0.4s; }
+        .hero-subtitle { animation-delay: 0.6s; }
+        .hero-buttons { animation-delay: 0.8s; }
+
+        /* توهج للصورة الشخصية */
+        .avatar-glow {
+            border: 8px solid var(--accent-color);
+            box-shadow: 0 0 20px var(--glow-color), 0 0 30px var(--glow-color) inset;
+        }
+
+        @keyframes pulse-glow {
+            0%, 100% {
+                box-shadow: 0 0 20px var(--glow-color), 0 0 30px var(--glow-color) inset;
+            }
+            50% {
+                box-shadow: 0 0 30px var(--glow-color), 0 0 45px var(--glow-color) inset;
+            }
+        }
+
+        /* تحسينات إضافية */
+        .section-title::after {
+            background: linear-gradient(to left, var(--accent-color), var(--accent-hover));
+            transition: width 0.3s ease;
+        }
+        .card-glow:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 30px var(--glow-color);
+            background-color: #1c222b;
+        }
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--glow-color);
+        }
+
     </style>
 </head>
+
 <body class="antialiased">
 
-    <div class="flex items-center justify-center mt-8 mb-4 space-x-4 space-x-reverse">
-        <img src="./images/image-1751592529094.jpeg" alt="يوسف الشريف" class="w-24 h-24 rounded-full border-4 border-blue-400 shadow-lg object-cover" />
-        <h1 class="text-2xl md:text-4xl font-black text-center">ملف أعمال المطور | يوسف الشريف</h1>
-    </div>
+    <div id="tsparticles"></div>
 
-    <header class="bg-gray-800/80 backdrop-blur-sm sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold accent-text">يوسف الشريف</a>
-            <div class="hidden md:flex space-x-8 space-x-reverse font-semibold">
-                <a href="#about" class="hover:text-blue-400">من أنا</a>
-                <a href="#experience" class="hover:text-blue-400">الخبرات</a>
-                <a href="#skills" class="hover:text-blue-400">المهارات</a>
-                <a href="#portfolio" class="hover:text-blue-400">أعمالي</a>
-                <a href="#contact" class="hover:text-blue-400">تواصل معي</a>
+    <header class="bg-gray-900/70 backdrop-blur-md sticky top-0 z-50 border-b border-[var(--border-color)]">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-blue-500 text-transparent bg-clip-text" data-ar="يوسف الشريف" data-en="Yousef ElSherif">يوسف الشريف</a>
+            
+            <div class="hidden md:flex space-x-8 space-x-reverse font-semibold text-gray-300">
+                <a href="#about" class="hover:text-white transition-colors duration-300" data-ar="من أنا" data-en="About">من أنا</a>
+                <a href="#experience" class="hover:text-white transition-colors duration-300" data-ar="الخبرات" data-en="Experience">الخبرات</a>
+                <a href="#skills" class="hover:text-white transition-colors duration-300" data-ar="المهارات" data-en="Skills">المهارات</a>
+                <a href="#portfolio" class="hover:text-white transition-colors duration-300" data-ar="أعمالي" data-en="Portfolio">أعمالي</a>
+                <a href="#contact" class="hover:text-white transition-colors duration-300" data-ar="تواصل معي" data-en="Contact">تواصل معي</a>
             </div>
-            <a href="#contact" class="bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600 transition duration-300" style="background-color: var(--accent-color);">
-                وظفني
-            </a>
+
+            <div class="flex items-center gap-4">
+                 <div class="flex">
+                    <button id="lang-ar" class="px-3 py-1 text-sm rounded-r-md bg-blue-600 text-white font-bold focus:outline-none">العربية</button>
+                    <button id="lang-en" class="px-3 py-1 text-sm rounded-l-md bg-gray-700 text-white font-bold focus:outline-none">English</button>
+                </div>
+                <a href="#contact" class="bg-blue-600 text-white font-bold py-2 px-5 rounded-full hover:bg-blue-700 transition duration-300 btn-primary hidden md:block" data-ar="وظفني" data-en="Hire Me">وظفني</a>
+            </div>
         </nav>
     </header>
 
-    <section class="py-20 md:py-32 px-6">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-black mb-4">مهندس حاسوب ومطوّر ويب متكامل</h1>
-            <p class="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">متخصص في بناء تطبيقات ويب حديثة وتفاعلية من الفكرة إلى الإطلاق، مع خبرة في إدارة تقنية المعلومات والتسويق الرقمي.</p>
-            <div class="flex justify-center space-x-4 space-x-reverse">
-                <a href="#portfolio" class="bg-blue-500 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-600 transition duration-300 text-lg" style="background-color: var(--accent-color);">شاهد أعمالي</a>
-                <a href="./Yousef Mahmoud CV.pdf" target="_blank" class="bg-gray-700 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-600 transition duration-300 text-lg">تحميل السيرة الذاتية</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="py-20 px-6 bg-gray-800">
-        <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
-            <div>
-                <h2 class="section-title text-3xl font-bold">من أنا؟</h2>
-                <p class="text-lg text-gray-300 leading-relaxed mb-4">أنا يوسف الشريف، مهندس حاسوب ومطوّر ويب شغوف، متخصص في بناء تطبيقات متكاملة باستخدام حزمة MERN Stack. أجمع بين المهارات التقنية في الواجهات الأمامية (Frontend) والخلفية (Backend) لتقديم حلول شاملة ومبتكرة.</p>
-                <p class="text-lg text-gray-300 leading-relaxed">أؤمن بأن أفضل المنتجات الرقمية هي التي تجمع بين الكود النظيف، التصميم الجذاب، وتجربة المستخدم السلسة. مشروعي الأبرز، <b>PC Master</b>، هو دليل على قدرتي على تحويل فكرة معقدة إلى منصة حقيقية، قوية، وقابلة للنمو.</p>
-            </div>
-            <div class="text-center">
-                <div class="bg-gray-700 p-8 rounded-xl shadow-lg">
-                    <h3 class="text-xl font-bold mb-4">ما الذي أقدمه؟</h3>
-                    <ul class="text-right space-y-3">
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 ml-3"></i> بناء تطبيقات ويب متكاملة من الصفر.</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 ml-3"></i> تطوير واجهات خلفية (APIs) آمنة وقوية.</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 ml-3"></i> تصميم واجهات أمامية تفاعلية ومتجاوبة.</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 ml-3"></i> إدارة البنية التحتية للشبكات والخوادم.</li>
-                        <li class="flex items-center"><i class="fas fa-check-circle text-blue-400 ml-3"></i> تقديم خدمات الدعم الفني وحل المشكلات.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Experience Section -->
-    <section id="experience" class="py-20 px-6">
+    <section class="min-h-[calc(100vh-68px)] flex items-center justify-center text-center p-6">
         <div class="container mx-auto">
-            <h2 class="section-title text-3xl font-bold text-center">الخبرات العملية والتعليم</h2>
+            
+            <img src="./images/image-1751592529094.jpeg" alt="يوسف الشريف" class="w-36 h-100 mx-auto border-4 border-blue-400 shadow-lg rounded-full object-cover mb-6 avatar-glow fade-in-up hero-image" />
+            
+            <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight md:leading-tight bg-gradient-to-r from-gray-100 via-blue-300 to-gray-100 text-transparent bg-clip-text fade-in-up hero-title" data-ar="مهندس حاسوب ومطوّر ويب متكامل" data-en="Computer Engineer & Full-Stack Web Developer">مهندس حاسوب ومطوّر ويب متكامل</h1>
+            
+            <p class="text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto mb-10 fade-in-up hero-subtitle" data-ar="متخصص في بناء تطبيقات ويب حديثة وتفاعلية من الفكرة إلى الإطلاق، مع خبرة في إدارة تقنية المعلومات والتسويق الرقمي." data-en="Specialized in building modern, interactive web applications from idea to launch, with experience in IT management and digital marketing.">متخصص في بناء تطبيقات ويب حديثة وتفاعلية من الفكرة إلى الإطلاق، مع خبرة في إدارة تقنية المعلومات والتسويق الرقمي.</p>
+            
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 fade-in-up hero-buttons">
+                <a href="#portfolio" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 text-lg transition-all duration-300" data-ar="شاهد أعمالي" data-en="See My Work">شاهد أعمالي</a>
+                <a href="./Yousef Mahmoud CV.pdf" download class="bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 text-lg border border-[var(--border-color)]" data-ar="تحميل السيرة الذاتية" data-en="Download CV">تحميل السيرة الذاتية</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 px-6 bg-gray-900/50">
+        <div class="container mx-auto grid md:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="section-title text-3xl font-bold" data-ar="من أنا؟" data-en="About Me?">من أنا؟</h2>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4" data-ar="أنا يوسف الشريف، مهندس حاسوب ومطوّر ويب شغوف، متخصص في بناء تطبيقات متكاملة باستخدام حزمة MERN Stack. أجمع بين المهارات التقنية في الواجهات الأمامية (Frontend) والخلفية (Backend) لتقديم حلول شاملة ومبتكرة." data-en="I'm Yousef ElSherif, a passionate computer engineer and web developer specializing in building full-stack applications using the MERN Stack. I combine frontend and backend skills to deliver comprehensive and innovative solutions.">أنا يوسف الشريف، مهندس حاسوب ومطوّر ويب شغوف، متخصص في بناء تطبيقات متكاملة باستخدام حزمة MERN Stack. أجمع بين المهارات التقنية في الواجهات الأمامية (Frontend) والخلفية (Backend) لتقديم حلول شاملة ومبتكرة.</p>
+                <p class="text-lg text-gray-300 leading-relaxed" data-ar="أؤمن بأن أفضل المنتجات الرقمية هي التي تجمع بين الكود النظيف، التصميم الجذاب، وتجربة المستخدم السلسة. مشروعي الأبرز، <b>PC Master</b>، هو دليل على قدرتي على تحويل فكرة معقدة إلى منصة حقيقية، قوية، وقابلة للنمو." data-en="I believe the best digital products combine clean code, attractive design, and smooth user experience. My flagship project, <b>PC Master</b>, is proof of my ability to turn a complex idea into a real, powerful, and scalable platform.">أؤمن بأن أفضل المنتجات الرقمية هي التي تجمع بين الكود النظيف، التصميم الجذاب، وتجربة المستخدم السلسة. مشروعي الأبرز، <b>PC Master</b>، هو دليل على قدرتي على تحويل فكرة معقدة إلى منصة حقيقية، قوية، وقابلة للنمو.</p>
+            </div>
+            <div class="card-glow p-8 rounded-xl border border-gray-700">
+                <h3 class="text-2xl font-bold mb-6 text-center" data-ar="ما الذي أقدمه؟" data-en="What Do I Offer?">ما الذي أقدمه؟</h3>
+                <ul class="text-right space-y-4">
+                    <li class="flex items-center text-lg"><i class="fas fa-check-circle text-blue-400 ml-4 text-xl"></i><span data-ar="بناء تطبيقات ويب متكاملة من الصفر." data-en="Building full-stack web applications from scratch.">بناء تطبيقات ويب متكاملة من الصفر.</span></li>
+                    <li class="flex items-center text-lg"><i class="fas fa-check-circle text-blue-400 ml-4 text-xl"></i><span data-ar="تطوير واجهات خلفية (APIs) آمنة وقوية." data-en="Developing secure and robust backend APIs.">تطوير واجهات خلفية (APIs) آمنة وقوية.</span></li>
+                    <li class="flex items-center text-lg"><i class="fas fa-check-circle text-blue-400 ml-4 text-xl"></i><span data-ar="تصميم واجهات أمامية تفاعلية ومتجاوبة." data-en="Designing interactive and responsive frontends.">تصميم واجهات أمامية تفاعلية ومتجاوبة.</span></li>
+                    <li class="flex items-center text-lg"><i class="fas fa-check-circle text-blue-400 ml-4 text-xl"></i><span data-ar="إدارة البنية التحتية للشبكات والخوادم." data-en="Managing network and server infrastructure.">إدارة البنية التحتية للشبكات والخوادم.</span></li>
+                    <li class="flex items-center text-lg"><i class="fas fa-check-circle text-blue-400 ml-4 text-xl"></i><span data-ar="تقديم خدمات الدعم الفني وحل المشكلات." data-en="Providing technical support and troubleshooting.">تقديم خدمات الدعم الفني وحل المشكلات.</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+     <section id="experience" class="py-20 px-6">
+        <div class="container mx-auto">
+            <h2 class="text-3xl font-bold text-center" data-ar="الخبرات العملية والتعليم" data-en="Experience & Education">الخبرات العملية والتعليم</h2>
             <div class="grid md:grid-cols-2 gap-16 mt-12">
                 <div>
-                    <h3 class="text-2xl font-bold mb-8 text-center">الخبرة العملية</h3>
-                    <div class="relative timeline">
-                        <div class="timeline-item mb-12">
-                            <div class="timeline-dot"></div>
-                            <h4 class="font-bold text-xl">مدير تقنية المعلومات والتسويق الرقمي</h4>
-                            <p class="font-semibold text-blue-400">مطعم ذا جلوبال فيو - مكة المكرمة</p>
-                            <p class="text-sm text-gray-400 mb-2">يناير 2022 - حتى الآن</p>
-                            <p class="text-gray-300">إدارة البنية التحتية التقنية، وتصميم وإدارة الحملات التسويقية الإلكترونية وتصميم الشعارات والمطبوعات.</p>
+                    <h3 class="text-2xl font-bold mb-8 text-center" data-ar="الخبرة العملية" data-en="Work Experience">الخبرة العملية</h3>
+                    <div class="relative border-r-2 border-dashed border-gray-700 pr-8 space-y-12">
+                         <div class="relative p-6 rounded-lg card-glow border border-[var(--border-color)] bg-[var(--bg-card)]">
+                            <div class="absolute -right-10 top-5 w-6 h-6 bg-blue-500 rounded-full border-4 border-[var(--bg-dark)]"></div>
+                            <h4 class="font-bold text-xl" data-ar="مدير تقنية المعلومات والتسويق الرقمي" data-en="IT & Digital Marketing Manager">مدير تقنية المعلومات والتسويق الرقمي</h4>
+                            <p class="font-semibold text-blue-400" data-ar="مطعم ذا جلوبال فيو - مكة المكرمة" data-en="The Global View Restaurant - Makkah">مطعم ذا جلوبال فيو - مكة المكرمة</p>
+                            <p class="text-sm text-gray-400 mb-2" data-ar="يناير 2022 - مارس 2023" data-en="Jan 2022 - Mar 2023">يناير 2022 - مارس 2023</p>
+                            <p class="text-gray-300" data-ar="إدارة البنية التحتية التقنية، وتصميم وإدارة الحملات التسويقية الإلكترونية وتصميم الشعارات والمطبوعات." data-en="Managing IT infrastructure, designing and managing digital marketing campaigns, and designing logos and prints.">إدارة البنية التحتية التقنية...</p>
                         </div>
-                        <div class="timeline-item mb-12">
-                            <div class="timeline-dot"></div>
-                            <h4 class="font-bold text-xl">مدير تقنية المعلومات ووسائل التواصل</h4>
-                            <p class="font-semibold text-blue-400">شركة آسيا واحة للسياحة - مكة المكرمة</p>
-                            <p class="text-sm text-gray-400 mb-2">2022 - 2023 (مستمر عن بعد)</p>
-                            <p class="text-gray-300">إدارة الأنظمة التقنية والموقع الإلكتروني، تقديم الدعم الفني، وتطوير المحتوى الرقمي.</p>
+                         <div class="relative p-6 rounded-lg card-glow border border-[var(--border-color)] bg-[var(--bg-card)]">
+                            <div class="absolute -right-10 top-5 w-6 h-6 bg-blue-500 rounded-full border-4 border-[var(--bg-dark)]"></div>
+                            <h4 class="font-bold text-xl" data-ar="مدير تقنية المعلومات ووسائل التواصل" data-en="IT & Social Media Manager">مدير تقنية المعلومات ووسائل التواصل</h4>
+                            <p class="font-semibold text-blue-400" data-ar="شركة آسيا واحة للسياحة - مكة المكرمة" data-en="Asia Oasis Tourism - Makkah">شركة آسيا واحة للسياحة - مكة المكرمة</p>
+                            <p class="text-sm text-gray-400 mb-2" data-ar="2022 - 2023 (مستمر عن بعد)" data-en="2022 - 2023 (Remote)">2022 - 2023 (مستمر عن بعد)</p>
+                            <p class="text-gray-300" data-ar="إدارة الأنظمة التقنية والموقع الإلكتروني، تقديم الدعم الفني، وتطوير المحتوى الرقمي." data-en="Managing technical systems and website, providing technical support, and developing digital content.">إدارة الأنظمة التقنية...</p>
                         </div>
-                        <div class="timeline-item">
-                            <div class="timeline-dot"></div>
-                            <h4 class="font-bold text-xl">مبرمج ومصمم مستقل</h4>
-                            <p class="font-semibold text-blue-400">منصات العمل الحر (Upwork, Fiverr, مستقل)</p>
-                            <p class="text-sm text-gray-400 mb-2">2018 - 2024</p>
-                            <p class="text-gray-300">تصميم وتطوير مواقع وتطبيقات، تصميم هويات بصرية، وتقديم خدمات الدعم الفني.</p>
+                         <div class="relative p-6 rounded-lg card-glow border border-[var(--border-color)] bg-[var(--bg-card)]">
+                            <div class="absolute -right-10 top-5 w-6 h-6 bg-blue-500 rounded-full border-4 border-[var(--bg-dark)]"></div>
+                            <h4 class="font-bold text-xl" data-ar="مبرمج ومصمم مستقل" data-en="Freelance Developer & Designer">مبرمج ومصمم مستقل</h4>
+                            <p class="font-semibold text-blue-400" data-ar="منصات العمل الحر (Upwork, Fiverr, مستقل)" data-en="Freelance Platforms (Upwork, Fiverr, Mostaql)">منصات العمل الحر (Upwork, Fiverr, مستقل)</p>
+                            <p class="text-sm text-gray-400 mb-2" data-ar="2018 - حتى الان" data-en="2018 - Present">2018 - حتى الان</p>
+                            <p class="text-gray-300" data-ar="تصميم وتطوير مواقع وتطبيقات، تصميم هويات بصرية، وتقديم خدمات الدعم الفني." data-en="Designing and developing websites and apps, branding, and providing technical support.">تصميم وتطوير مواقع وتطبيقات...</p>
                         </div>
                     </div>
                 </div>
-                <div>
-                    <h3 class="text-2xl font-bold mb-8 text-center">التعليم والشهادات</h3>
-                    <div class="space-y-8">
-                        <div class="bg-gray-800 p-6 rounded-lg">
-                            <h4 class="font-bold text-xl">بكالوريوس هندسة الحاسوب</h4>
-                            <p class="text-blue-400">المعهد العالي للهندسة بمدينة العبور (2023 - حتى الآن)</p>
-                        </div>
-                        <div class="bg-gray-800 p-6 rounded-lg">
-                            <h4 class="font-bold text-xl">دبلوم تخصص الحاسوب</h4>
-                            <p class="text-blue-400">مدرسة سمارت للحاسبات (2021 - 2023)</p>
-                        </div>
-                        <div class="bg-gray-800 p-6 rounded-lg">
-                            <h4 class="font-bold text-xl">دورات وشهادات احترافية</h4>
-                            <p class="text-gray-300">حاصل على شهادات ودورات متعددة من منصات عالمية مثل Cisco (CCNA, CCNP), CompTIA (A+, Network+), Microsoft (AZ-900), و AWS.</p>
-                        </div>
+                <div class="space-y-8">
+                    <h3 class="text-2xl font-bold text-center" data-ar="التعليم والشهادات" data-en="Education & Certificates">التعليم والشهادات</h3>
+                    
+                    <div class="p-6 rounded-lg card-glow border border-[var(--border-color)] bg-[var(--bg-card)]">
+                        <h4 class="font-bold text-xl" data-ar="بكالوريوس هندسة الحاسوب" data-en="BSc in Computer Engineering">بكالوريوس هندسة الحاسوب</h4>
+                        <p class="text-blue-400" data-ar="المعهد العالي للهندسة بمدينة العبور (2023 - حتى الآن)" data-en="Higher Institute of Engineering, Obour City (2023 - Present)">المعهد العالي للهندسة بمدينة العبور (2023 - حتى الآن)</p>
+                    </div>
+
+                    <div class="p-6 rounded-lg card-glow border border-[var(--border-color)] bg-[var(--bg-card)]">
+                        <h4 class="font-bold text-xl" data-ar="دبلوم تخصص الحاسوب" data-en="Computer Diploma">دبلوم تخصص الحاسوب</h4>
+                        <p class="text-blue-400" data-ar="مدرسة سمارت للحاسبات (2021 - 2023)" data-en="Smart School for Computers (2021 - 2023)">مدرسة سمارت للحاسبات (2021 - 2023)</p>
+                    </div>
+
+                    <div class="p-6 rounded-lg card-glow border border-[var(--border-color)] bg-[var(--bg-card)]">
+                        <h4 class="font-bold text-xl" data-ar="جامعة الأورال الفيدرالية - القسم التحضيري للغة الروسية" data-en="Ural Federal University - Russian Preparatory Department">جامعة الأورال الفيدرالية - القسم التحضيري للغة الروسية</h4>
+                        <p class="text-blue-400" data-ar="روسيا (2024 - 2025)" data-en="Russia (2024 - 2025)">روسيا (2024 - 2025)</p>
+                    </div>
+
+                    <div class="p-6 rounded-lg card-glow border border-[var(--border-color)] bg-[var(--bg-card)]">
+                        <h4 class="font-bold text-xl" data-ar="دورات وشهادات احترافية" data-en="Professional Courses & Certificates">دورات وشهادات احترافية</h4>
+                        <p class="text-gray-300" data-ar="حاصل على شهادات ودورات متعددة من منصات عالمية مثل Cisco (CCNA, CCNP), CompTIA (A+, Network+), Microsoft (AZ-900), و AWS." data-en="Holder of multiple certificates from global platforms such as Cisco (CCNA, CCNP), CompTIA (A+, Network+), Microsoft (AZ-900), and AWS.">حاصل على شهادات ودورات متعددة من منصات عالمية...</p>
+                    </div>
+
+                    <div class="p-6 rounded-lg card-glow border border-[var(--border-color)] bg-[var(--bg-card)]">
+                        <h4 class="font-bold text-xl mb-4" data-ar="اللغات" data-en="Languages">اللغات</h4>
+                        <ul class="space-y-2">
+                            <li class="flex items-center justify-between"><span class="font-semibold" data-ar="العربية" data-en="Arabic">العربية</span> <span class="text-blue-400 font-bold" data-ar="اللغة الأم" data-en="Native">اللغة الأم</span></li>
+                            <li class="flex items-center justify-between"><span class="font-semibold" data-ar="الإنجليزية" data-en="English">الإنجليزية</span> <span class="text-blue-400 font-bold" data-ar="متقدم" data-en="Advanced">متقدم</span></li>
+                            <li class="flex items-center justify-between"><span class="font-semibold" data-ar="الروسية" data-en="Russian">الروسية</span> <span class="text-blue-400 font-bold" data-ar="متقدم" data-en="Advanced">متقدم</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    
-    <section id="skills" class="py-20 px-6 bg-gray-800">
+
+    <section id="skills" class="py-20 px-6 bg-black/20">
         <div class="container mx-auto text-center">
-            <h2 class="section-title text-3xl font-bold">المهارات التقنية</h2>
-            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto mt-12">
-                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-python text-4xl text-yellow-400 mb-3"></i><h3 class="font-semibold text-lg">Python</h3></div>
-                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-java text-4xl text-red-500 mb-3"></i><h3 class="font-semibold text-lg">Java</h3></div>
-                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-js-square text-4xl text-yellow-300 mb-3"></i><h3 class="font-semibold text-lg">JavaScript</h3></div>
-                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-react text-4xl text-blue-400 mb-3"></i><h3 class="font-semibold text-lg">React.js</h3></div>
-                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-node-js text-4xl text-green-400 mb-3"></i><h3 class="font-semibold text-lg">Node.js</h3></div>
-                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fas fa-database text-4xl text-green-500 mb-3"></i><h3 class="font-semibold text-lg">MongoDB & MySQL</h3></div>
-                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-html5 text-4xl text-orange-500 mb-3"></i><h3 class="font-semibold text-lg">HTML5</h3></div>
-                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-css3-alt text-4xl text-blue-500 mb-3"></i><h3 class="font-semibold text-lg">CSS3 & Tailwind</h3></div>
-                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fas fa-network-wired text-4xl text-purple-400 mb-3"></i><h3 class="font-semibold text-lg">Cisco (CCNA/CCNP)</h3></div>
-                <div class="skill-card bg-gray-900 p-4 rounded-lg"><i class="fab fa-aws text-4xl text-orange-400 mb-3"></i><h3 class="font-semibold text-lg">AWS Cloud</h3></div>
+            <h2 class="text-3xl font-bold" data-ar="المهارات التقنية" data-en="Technical Skills">المهارات التقنية</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-7xl mx-auto mt-12">
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-python text-5xl text-yellow-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Python</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-java text-5xl text-red-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Java</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-js-square text-5xl text-yellow-300 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">JavaScript</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-mobile-alt text-5xl text-blue-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Flutter & Dart</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-php text-5xl text-indigo-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">PHP</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-database text-5xl text-green-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">MySQL</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-html5 text-5xl text-orange-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">HTML5</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-css3-alt text-5xl text-blue-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">CSS3</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-code text-5xl text-purple-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">C# & C++</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-swift text-5xl text-orange-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Swift & Kotlin</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-linux text-5xl text-white mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Linux</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-windows text-5xl text-sky-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Windows Server</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-network-wired text-5xl text-gray-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Cisco CCNA/CCNP</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-shield-alt text-5xl text-green-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Network Security</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-user-secret text-5xl text-red-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Ethical Hacking</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-microchip text-5xl text-teal-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">CompTIA A+/Net+</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-aws text-5xl text-amber-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">AWS Cloud</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-microsoft text-5xl text-blue-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Microsoft AZ-900</h3></div>
             </div>
         </div>
     </section>
 
     <section id="portfolio" class="py-20 px-6">
         <div class="container mx-auto">
-            <h2 class="section-title text-3xl font-bold text-center">أبرز أعمالي</h2>
-            <div class="project-card mt-12 bg-gray-800 rounded-xl overflow-hidden md:flex items-center shadow-2xl border border-gray-700">
-                <div class="md:w-1/2 p-8">
-                    <h3 class="text-3xl font-black mb-3">منصة PC Master</h3>
-                    <p class="text-gray-400 leading-relaxed mb-6">
-                        مشروع متكامل لبناء وتخصيص أجهزة الكمبيوتر، تم بناؤه من الصفر باستخدام حزمة MERN Stack. يقدم المشروع حلاً شاملاً للمستخدمين بدءًا من اقتراح التجميعات عبر مساعد ذكي، وانتهاءً بالشراء والاطلاع على معرض أعمال المجتمع.
-                    </p>
-                    <h4 class="font-bold text-lg mb-4">أهم الميزات التي قمت بتطويرها:</h4>
-                    <ul class="space-y-3 mb-6">
-                        <li class="flex"><i class="fas fa-check text-blue-400 mt-1 ml-3"></i><span><b>أداة بناء ذكية:</b> مع فحص توافق فوري بين القطع ومحاكاة ثلاثية الأبعاد.</span></li>
-                        <li class="flex"><i class="fas fa-check text-blue-400 mt-1 ml-3"></i><span><b>مساعد ذكي (AI):</b> يقترح تجميعات بناءً على ميزانية المستخدم واحتياجاته.</span></li>
-                        <li class="flex"><i class="fas fa-check text-blue-400 mt-1 ml-3"></i><span><b>نظام مصادقة متكامل:</b> تسجيل، دخول، وتحديث ملفات المستخدمين باستخدام JWT.</span></li>
-                        <li class="flex"><i class="fas fa-check text-blue-400 mt-1 ml-3"></i><span><b>لوحة تحكم للمدير:</b> لإدارة المنتجات، الطلبات، والمستخدمين.</span></li>
-                        <li class="flex"><i class="fas fa-check text-blue-400 mt-1 ml-3"></i><span><b>مجتمع تفاعلي:</b> معرض للتجميعات وسوق للمبدعين.</span></li>
-                    </ul>
-                    <div class="flex space-x-4 space-x-reverse">
-                        <a href="https://sought-polite-rattler.ngrok-free.app" target="_blank" class="bg-blue-500 text-white font-bold py-2 px-6 rounded-full hover:bg-blue-600 transition" style="background-color: var(--accent-color);">
-                            <i class="fas fa-external-link-alt mr-2"></i> شاهد المشروع
-                        </a>
-                        <a href="https://github.com/KINGMAN8888/my-pcgaming-website.git" target="_blank" class="bg-gray-700 text-white font-bold py-2 px-6 rounded-full hover:bg-gray-600 transition">
-                            <i class="fab fa-github mr-2"></i> اطلع على الكود
-                        </a>
+            <h2 class="text-3xl font-bold text-center mb-16" data-ar="أبرز أعمالي" data-en="Featured Projects">أبرز أعمالي</h2>
+            <div class="group relative rounded-2xl overflow-hidden border border-[var(--border-color)]">
+                <img src="./images/logo1.png" alt="PC Master Project Background" class="h-2000 absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/40"></div>
+                <div class="relative grid md:grid-cols-2 gap-8 items-center">
+                    <div class="p-8 md:p-12">
+                        <!-- يمكن إضافة صورة أو محتوى إضافي هنا إذا رغبت لاحقاً -->
                     </div>
-                </div>
-                <div class="md:w-1/2 p-8 bg-gray-900">
-                    <img src="./images/logo.png" alt="PC Master Project" class="rounded-lg shadow-xl w-full">
+                    <div class="p-8 md:p-12 bg-black/40 backdrop-blur-lg h-full border-r border-[var(--border-color)]">
+                        <h3 class="text-3xl lg:text-4xl font-black mb-4 text-white" data-ar="منصة PC Master" data-en="PC Master Platform">منصة PC Master</h3>
+                        <p class="text-[var(--text-secondary)] leading-relaxed mb-6" data-ar="مشروع متكامل لبناء وتخصيص أجهزة الكمبيوتر، تم بناؤه من الصفر باستخدام حزمة MERN Stack. يقدم المشروع حلاً شاملاً للمستخدمين بدءًا من اقتراح التجميعات عبر مساعد ذكي، وانتهاءً بالشراء والاطلاع على معرض أعمال المجتمع." data-en="A comprehensive project for building and customizing PCs, built from scratch using the MERN Stack. The platform offers users a complete solution from smart build suggestions to purchase and community showcase.">مشروع متكامل لبناء وتخصيص أجهزة الكمبيوتر...</p>
+                        <h4 class="font-bold text-lg mb-4 text-white" data-ar="أهم الميزات:" data-en="Key Features:">أهم الميزات:</h4>
+                        <ul class="space-y-3 mb-8 text-[var(--text-secondary)]">
+                            <li class="flex items-start"><i class="fas fa-check text-blue-400 mt-1 ml-3 shrink-0"></i><span data-ar="<b>أداة بناء ذكية:</b> مع فحص توافق فوري ومحاكاة ثلاثية الأبعاد." data-en="<b>Smart Builder:</b> Instant compatibility check and 3D simulation."><b>أداة بناء ذكية:</b> مع فحص توافق فوري ومحاكاة ثلاثية الأبعاد.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-blue-400 mt-1 ml-3 shrink-0"></i><span data-ar="<b>مساعد ذكي (AI):</b> يقترح تجميعات بناءً على الميزانية والاحتياجات." data-en="<b>AI Assistant:</b> Suggests builds based on budget and needs."><b>مساعد ذكي (AI):</b> يقترح تجميعات بناءً على الميزانية والاحتياجات.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-blue-400 mt-1 ml-3 shrink-0"></i><span data-ar="<b>نظام مصادقة متكامل:</b> باستخدام JWT لتأمين المستخدمين." data-en="<b>Integrated Authentication:</b> Using JWT for user security."><b>نظام مصادقة متكامل:</b> باستخدام JWT لتأمين المستخدمين.</span></li>
+                            <li class="flex items-start"><i class="fas fa-check text-blue-400 mt-1 ml-3 shrink-0"></i><span data-ar="<b>لوحة تحكم للمدير:</b> لإدارة المنتجات، الطلبات، والمستخدمين." data-en="<b>Admin Dashboard:</b> To manage products, orders, and users."><b>لوحة تحكم للمدير:</b> لإدارة المنتجات، الطلبات، والمستخدمين.</span></li>
+                        </ul>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://sought-polite-rattler.ngrok-free.app" target="_blank" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-full hover:bg-blue-700 transition duration-300 text-center" data-ar="شاهد المشروع" data-en="View Project"><i class="fas fa-external-link-alt mr-2"></i> شاهد المشروع</a>
+                            <a href="https://github.com/KINGMAN8888/PC-MASTER.git" target="_blank" class="bg-gray-800 text-white font-bold py-3 px-6 rounded-full hover:bg-gray-700 transition duration-300 text-center border border-[var(--border-color)]" data-ar="اطلع على الكود" data-en="View Code"><i class="fab fa-github mr-2"></i> اطلع على الكود</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 px-6 text-center bg-gray-800">
+    <section id="contact" class="py-20 px-6 text-center bg-gray-900/50">
         <div class="container mx-auto">
-            <h2 class="text-3xl font-bold mb-4">هل لديك فكرة مشروع؟</h2>
-            <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto">أنا جاهز لمساعدتك في تحويل فكرتك إلى حقيقة. سواء كنت تحتاج إلى تطبيق ويب متكامل، أو موقع تجارة إلكترونية، أو منصة مخصصة، يمكننا العمل معًا لتحقيق أهدافك.</p>
-            <a href="mailto:yousefmahmoudsaber@gmail.com" class="bg-blue-500 text-white font-bold text-xl py-4 px-10 rounded-full hover:bg-blue-600 transition duration-300 inline-block" style="background-color: var(--accent-color);">
-                <i class="fas fa-envelope mr-3"></i> تواصل معي
+            <h2 class="text-3xl lg:text-4xl font-bold mb-4" data-ar="هل لديك فكرة مشروع؟" data-en="Have a Project Idea?">هل لديك فكرة مشروع؟</h2>
+            <p class="text-lg text-gray-400 mb-8 max-w-2xl mx-auto" data-ar="أنا جاهز لمساعدتك في تحويل فكرتك إلى حقيقة. سواء كنت تحتاج إلى تطبيق ويب متكامل، أو موقع تجارة إلكترونية، أو منصة مخصصة، يمكننا العمل معًا لتحقيق أهدافك." data-en="I'm ready to help you turn your idea into reality. Whether you need a full web app, e-commerce site, or a custom platform, let's work together to achieve your goals.">أنا جاهز لمساعدتك في تحويل فكرتك إلى حقيقة...</p>
+            <a href="mailto:yousefmahmoudsaber@gmail.com" class="bg-blue-600 text-white font-bold text-xl py-4 px-10 rounded-full hover:bg-blue-700 transition duration-300 inline-block btn-primary" data-ar="تواصل معي الآن" data-en="Contact Me Now">
+                <i class="fas fa-envelope mr-3"></i> 
+                <span data-ar="تواصل معي الآن" data-en="Contact Me Now">تواصل معي الآن</span>
             </a>
-            <div class="mt-8 text-lg flex flex-col items-center gap-3">
-                <p class="text-gray-400">أو تواصل عبر الهاتف: <span dir="ltr">+20 109 758 5951</span></p>
-                <a href="https://wa.me/qr/JYXFKBMSA2OBG1" target="_blank" class="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full transition duration-300 w-fit">
-                    <i class="fab fa-whatsapp text-2xl ml-2"></i>
-                    <span dir="ltr">+20 109 758 5951</span>
-                </a>
+            <div class="mt-10 text-lg flex flex-col items-center gap-4">
+                <p class="text-gray-400" data-ar="أو تواصل عبر:" data-en="Or get in touch via:">أو تواصل عبر:</p>
+                <div class="flex items-center gap-4">
+                    <a href="https://wa.me/qr/JYXFKBMSA2OBG1" target="_blank" class="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full transition duration-300">
+                        <i class="fab fa-whatsapp text-2xl mr-2"></i>
+                        <span dir="ltr">+20 109 758 5951</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
-    
-    <footer class="bg-gray-900 py-6">
-        <div class="container mx-auto text-center text-gray-400">
-            <p>&copy; 2025 - جميع الحقوق محفوظة لـ يوسف الشريف</p>
+
+    <footer class="bg-gray-900 py-6 border-t border-gray-700/50">
+        <div class="container mx-auto text-center text-gray-500">
+            <p data-ar="&copy; 2025 - جميع الحقوق محفوظة لـ يوسف الشريف" data-en="&copy; 2025 - All rights reserved to Yousef ElSherif">&copy; 2025 - جميع الحقوق محفوظة لـ يوسف الشريف</p>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/tsparticles@3.3.0/tsparticles.bundle.min.js"></script>
     <script>
-        // Tailwind CSS configuration for dark mode
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'bg-dark': '#111827',
-                        'bg-light': '#1f2937',
-                        'text-primary': '#f3f4f6',
-                        'text-secondary': '#9ca3af',
-                        'accent-color': '#3b82f6',
-                        'accent-hover': '#2563eb'
-                    }
-                }
-            }
-        };
-        // Smooth scroll for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth' });
+        // إعداد وتشغيل الجسيمات المتحركة
+        (async () => {
+            await tsParticles.load({
+                id: "tsparticles",
+                options: {
+                    background: {
+                        color: { value: "transparent" }
+                    },
+                    fpsLimit: 60,
+                    interactivity: {
+                        events: {
+                            onHover: { enable: true, mode: "repulse" },
+                            onClick: { enable: true, mode: "push" }
+                        },
+                        modes: {
+                            repulse: { distance: 100, duration: 0.4 },
+                            push: { quantity: 4 }
+                        }
+                    },
+                    particles: {
+                        color: { value: "#4a5568" },
+                        links: {
+                            color: "#4a5568",
+                            distance: 150,
+                            enable: true,
+                            opacity: 0.2,
+                            width: 1
+                        },
+                        move: {
+                            direction: "none",
+                            enable: true,
+                            outModes: "out",
+                            random: false,
+                            speed: 1,
+                            straight: false
+                        },
+                        number: {
+                            density: { enable: true, area: 800 },
+                            value: 80
+                        },
+                        opacity: { value: 0.2 },
+                        shape: { type: "circle" },
+                        size: { value: { min: 1, max: 3 } }
+                    },
+                    detectRetina: true
                 }
             });
-        });
-        // Optional: Highlight active section in navigation (if sidebar exists)
-        // ...existing code...
+        })();
+
+        // Language Switcher Logic
+        function setLang(lang) {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.querySelectorAll('[data-ar]').forEach(el => {
+                const text = el.getAttribute(lang === 'ar' ? 'data-ar' : 'data-en');
+                if (text) {
+                    // This check prevents accidentally overwriting complex inner HTML
+                    if (el.children.length === 0 || el.classList.contains('hero-buttons')) {
+                         el.innerHTML = text;
+                    }
+                }
+            });
+
+            const arBtn = document.getElementById('lang-ar');
+            const enBtn = document.getElementById('lang-en');
+            arBtn.classList.toggle('bg-blue-600', lang === 'ar');
+            arBtn.classList.toggle('bg-gray-700', lang !== 'ar');
+            enBtn.classList.toggle('bg-blue-600', lang === 'en');
+            enBtn.classList.toggle('bg-gray-700', lang !== 'en');
+        }
+
+        document.getElementById('lang-ar').onclick = () => setLang('ar');
+        document.getElementById('lang-en').onclick = () => setLang('en');
+        
+        // Default language
+        setLang('ar');
     </script>
 </body>
+
 </html>
