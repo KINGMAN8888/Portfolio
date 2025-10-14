@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ملف أعمال المطور | يوسف الشريف</title>
+    <title>يوسف الشريف | مهندس حاسوب ومطور برمجيات متكامل</title>
+    <meta name="description" content="يوسف الشريف - مهندس حاسوب ومطور برمجيات متكامل (Full-Stack). خبرة في تطوير تطبيقات MERN، Flutter، البنى السحابية AWS/Azure، أمن الشبكات، التحول الرقمي، والذكاء الاصطناعي. Computer Engineer & Full-Stack Developer delivering secure, scalable platforms." />
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -60,7 +62,13 @@
         .hero-image { animation-delay: 0.2s; }
         .hero-title { animation-delay: 0.4s; }
         .hero-subtitle { animation-delay: 0.6s; }
-        .hero-buttons { animation-delay: 0.8s; }
+    .hero-buttons { animation-delay: 0.8s; }
+    /* Utility classes for staggered animation delays */
+    .anim-delay-150 { animation-delay: .15s !important; }
+    .anim-delay-300 { animation-delay: .3s !important; }
+    .anim-delay-450 { animation-delay: .45s !important; }
+    .anim-delay-600 { animation-delay: .6s !important; }
+    .anim-delay-750 { animation-delay: .75s !important; }
 
         /* توهج للصورة الشخصية */
         .avatar-glow {
@@ -96,7 +104,7 @@
             0% { background-position: -200% 0; }
             100% { background-position: 200% 0; }
         }
-         .shimmer-bar {
+        .shimmer-bar {
             background-image: linear-gradient(to right, var(--accent-color) 0%, #60a5fa 50%, var(--accent-color) 100%);
             background-size: 200% 100%;
             animation: shimmer 4s linear infinite;
@@ -130,16 +138,33 @@
         </nav>
     </header>
 
-    <section class="min-h-[calc(100vh-68px)] flex items-center justify-center text-center p-6">
+    <!-- Professional Summary moved to top -->
+    <section id="summary" class="py-16 px-6 bg-black/30">
         <div class="container mx-auto">
-            
-            <img src="./images/CVP.PNG" alt="يوسف الشريف" class="w-36 h-100 mx-auto border-4 border-blue-400 shadow-lg rounded-full object-cover mb-6 avatar-glow fade-in-up hero-image" />
-            
-            <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight md:leading-tight bg-gradient-to-r from-gray-100 via-blue-300 to-gray-100 text-transparent bg-clip-text fade-in-up hero-title" data-ar="مهندس حاسوب ومطوّر ويب متكامل" data-en="Computer Engineer & Full-Stack Web Developer">مهندس حاسوب ومطوّر ويب متكامل</h1>
-            
-            <p class="text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto mb-10 fade-in-up hero-subtitle" data-ar="متخصص في بناء تطبيقات ويب حديثة وتفاعلية من الفكرة إلى الإطلاق، مع خبرة في إدارة تقنية المعلومات والتسويق الرقمي." data-en="Specialized in building modern, interactive web applications from idea to launch, with experience in IT management and digital marketing.">متخصص في بناء تطبيقات ويب حديثة وتفاعلية من الفكرة إلى الإطلاق، مع خبرة في إدارة تقنية المعلومات والتسويق الرقمي.</p>
-            
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4 fade-in-up hero-buttons">
+            <div class="mb-12 text-center">
+                <img src="./images/CVP.PNG" alt="يوسف الشريف" data-ar-alt="يوسف الشريف" data-en-alt="Yousef Alsherief" class="w-36 h-100 mx-auto border-4 border-blue-400 shadow-lg rounded-full object-cover mb-6 avatar-glow fade-in-up hero-image" />
+                <h1 class="text-4xl md:text-7xl font-black mb-4 leading-tight md:leading-tight bg-gradient-to-r from-gray-100 via-blue-300 to-gray-100 text-transparent bg-clip-text fade-in-up hero-title" data-ar="مهندس حاسوب ومطور برمجيات متكامل" data-en="Computer Engineer & Full-Stack Developer">مهندس حاسوب ومطور برمجيات متكامل</h1>
+                <p class="text-lg md:text-xl text-[var(--text-secondary)] max-w-3xl mx-auto mb-8 fade-in-up hero-subtitle" data-ar="أبني منصات وتطبيقات ويب عالية الأداء قابلة للتوسع، مع تركيز على المعمارية النظيفة، الأمان متعدد الطبقات، والخدمات السحابية." data-en="I build high-performance, scalable web platforms with a focus on clean architecture, layered security, and cloud services.">أبني منصات وتطبيقات ويب عالية الأداء قابلة للتوسع، مع تركيز على المعمارية النظيفة، الأمان متعدد الطبقات، والخدمات السحابية.</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="p-6 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] card-glow fade-in-up anim-delay-150">
+                    <h3 class="font-bold text-xl mb-3" data-ar="هندسة البرمجيات" data-en="Software Engineering">هندسة البرمجيات</h3>
+                    <p class="text-[var(--text-secondary)] text-sm leading-relaxed" data-ar="معماريات نظيفة (Microservices, MVC)، واجهات React / Next.js / Tailwind." data-en="Clean architectures (Microservices, MVC), React / Next.js / Tailwind UIs.">معماريات نظيفة (Microservices, MVC)، واجهات React / Next.js / Tailwind.</p>
+                </div>
+                <div class="p-6 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] card-glow fade-in-up anim-delay-300">
+                    <h3 class="font-bold text-xl mb-3" data-ar="السحابة و DevOps" data-en="Cloud & DevOps">السحابة و DevOps</h3>
+                    <p class="text-[var(--text-secondary)] text-sm leading-relaxed" data-ar="AWS / Azure، حاويات، CI/CD، مراقبة الأداء وتحسين التكلفة." data-en="AWS / Azure, containers, CI/CD, performance monitoring & cost optimization.">AWS / Azure، حاويات، CI/CD، مراقبة الأداء وتحسين التكلفة.</p>
+                </div>
+                <div class="p-6 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] card-glow fade-in-up anim-delay-450">
+                    <h3 class="font-bold text-xl mb-3" data-ar="الأمن السيبراني" data-en="Cybersecurity">الأمن السيبراني</h3>
+                    <p class="text-[var(--text-secondary)] text-sm leading-relaxed" data-ar="طبقات حماية، إدارة الهوية، كشف الثغرات، تشفير البيانات." data-en="Defense in depth, IAM, vulnerability assessment, data encryption.">طبقات حماية، إدارة الهوية، كشف الثغرات، تشفير البيانات.</p>
+                </div>
+                <div class="p-6 rounded-lg border border-[var(--border-color)] bg-[var(--bg-card)] card-glow fade-in-up anim-delay-600">
+                    <h3 class="font-bold text-xl mb-3" data-ar="الذكاء الاصطناعي والتحول الرقمي" data-en="AI & Digital Transformation">الذكاء الاصطناعي والتحول الرقمي</h3>
+                    <p class="text-[var(--text-secondary)] text-sm leading-relaxed" data-ar="دمج نماذج ذكاء اصطناعي لتحسين تجربة المستخدم والأتمتة واتخاذ القرار." data-en="Integrating AI models to enhance UX, automation & decision-making.">دمج نماذج ذكاء اصطناعي لتحسين تجربة المستخدم والأتمتة واتخاذ القرار.</p>
+                </div>
+            </div>
+            <div class="mt-12 flex flex-col sm:flex-row justify-center items-center gap-4 fade-in-up hero-buttons anim-delay-750">
                 <a href="#portfolio" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 text-lg transition-all duration-300" data-ar="شاهد أعمالي" data-en="See My Work">شاهد أعمالي</a>
                 <a href="#contact" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-full hover:bg-blue-700 text-lg transition-all duration-300" data-ar="تواصل معي" data-en="Contact">تواصل معي</a>
                 <a href="./Yousef Mahmoud CV.pdf" download class="bg-gray-800 text-white font-bold py-3 px-8 rounded-full hover:bg-gray-700 transition duration-300 text-lg border border-[var(--border-color)]" data-ar="تحميل السيرة الذاتية" data-en="Download CV">تحميل السيرة الذاتية</a>
@@ -152,8 +177,8 @@
             
             <div>
                 <h2 class="text-3xl font-bold mb-6" data-ar="من أنا؟" data-en="About Me">من أنا؟</h2>
-                <p class="text-lg text-gray-300 leading-relaxed mb-4" data-ar="أنا يوسف الشريف، مهندس حاسوب ومحترف في تقنية المعلومات، أمتلك شغفاً قوياً في بناء الجسور بين تطوير البرمجيات المتقدمة وإدارة البنى التحتية التقنية القوية. بفضل خبرتي المتنوعة كمطور ويب متكامل (Full-Stack) متخصص في حزمة MERN، وكـمدير لتقنية المعلومات، أقدم حلولاً رقمية لا تعمل بكفاءة فحسب، بل هي أيضاً آمنة وقابلة للتطوير." data-en="I am Yousef Alsherief, a computer engineer and IT professional with a strong passion for bridging the gap between advanced software development and robust IT infrastructure management. With my diverse experience as a Full-Stack developer specializing in the MERN stack and as an IT Manager, I deliver digital solutions that are not only efficient but also secure and scalable.">أنا يوسف الشريف، مهندس حاسوب ومحترف في تقنية المعلومات، أمتلك شغفاً قوياً في بناء الجسور بين تطوير البرمجيات المتقدمة وإدارة البنى التحتية التقنية القوية. بفضل خبرتي المتنوعة كمطور ويب متكامل (Full-Stack) متخصص في حزمة MERN، وكـمدير لتقنية المعلومات، أقدم حلولاً رقمية لا تعمل بكفاءة فحسب، بل هي أيضاً آمنة وقابلة للتطوير.</p>
-                <p class="text-lg text-gray-300 leading-relaxed" data-ar="هدفي هو استخدام هذه المهارات المتكاملة لتحويل الأفكار المعقدة إلى منتجات ناجحة، تماماً كما فعلت في مشروعي الأبرز <b>PC Master</b>. أسعى دائماً لمواجهة التحديات التقنية وتقديم قيمة حقيقية من خلال حلول مبتكرة ومستدامة." data-en="My goal is to use these integrated skills to transform complex ideas into successful products, just as I did with my flagship project, <b>PC Master</b>. I always seek to tackle technical challenges and deliver real value through innovative and sustainable solutions.">هدفي هو استخدام هذه المهارات المتكاملة لتحويل الأفكار المعقدة إلى منتجات ناجحة، تماماً كما فعلت في مشروعي الأبرز <b>PC Master</b>. أسعى دائماً لمواجهة التحديات التقنية وتقديم قيمة حقيقية من خلال حلول مبتكرة ومستدامة.</p>
+                <p class="text-lg text-gray-300 leading-relaxed mb-4" data-ar="أنا يوسف الشريف، مهندس حاسوب ومطور برمجيات متكامل؛ أدمج بين هندسة الأنظمة، تطوير الواجهات والخلفيات، وأمن الشبكات لتقديم حلول رقمية متينة وآمنة وقابلة للتوسع. بخبرة في MERN و Flutter وتكامل السحابة على AWS و Azure، أبني منتجات تدعم النمو وتقلل التكاليف." data-en="I'm Yousef Alsherief, a Computer Engineer & Full-Stack Developer integrating systems engineering, front-end & back-end development, and network security to deliver robust, secure, and scalable digital solutions. With MERN, Flutter, and cloud integration (AWS/Azure) experience, I build products that enable growth and reduce cost.">أنا يوسف الشريف، مهندس حاسوب ومطور برمجيات متكامل؛ أدمج بين هندسة الأنظمة، تطوير الواجهات والخلفيات، وأمن الشبكات لتقديم حلول رقمية متينة وآمنة وقابلة للتوسع. بخبرة في MERN و Flutter وتكامل السحابة على AWS و Azure، أبني منتجات تدعم النمو وتقلل التكاليف.</p>
+                <p class="text-lg text-gray-300 leading-relaxed" data-ar="أركز على تصميم معماريات نظيفة، أمان متعدد الطبقات، وأتمتة خطوط النشر CI/CD. من <b>PC Master</b> إلى مساعدين ذكيين مدعومين بالذكاء الاصطناعي، أضمن الجمع بين الأداء وتجربة المستخدم والقابلية للتطوير." data-en="I focus on clean architecture design, layered security, and automated CI/CD pipelines. From <b>PC Master</b> to AI-powered assistants, I ensure a balance of performance, user experience, and scalability.">أركز على تصميم معماريات نظيفة، أمان متعدد الطبقات، وأتمتة خطوط النشر CI/CD. من <b>PC Master</b> إلى مساعدين ذكيين مدعومين بالذكاء الاصطناعي، أضمن الجمع بين الأداء وتجربة المستخدم والقابلية للتطوير.</p>
             </div>
 
             <div class="p-8 rounded-xl border border-[var(--border-color)] bg-[var(--bg-card)] card-glow">
@@ -270,7 +295,7 @@
 
    <section id="certifications" class="py-20 px-6">
         <div class="container mx-auto">
-            <h2 class="text-3xl font-bold text-center mb-12" data-ar="الشهادات الاحترافية" data-en="Licenses & Certifications">الشهادات الاحترافية</h2>
+                <h2 class="text-3xl font-bold text-center mb-12" data-ar="الشهادات والاعتمادات" data-en="Professional Certifications">الشهادات والاعتمادات</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 
                 <div class="rounded-lg overflow-hidden border border-[var(--border-color)] bg-[var(--bg-card)] card-glow">
@@ -292,64 +317,64 @@
                 <div class="rounded-lg overflow-hidden border border-[var(--border-color)] bg-[var(--bg-card)] card-glow">
                     <img src="./images/certs/Microsoft.png" alt="Microsoft C# Certificate" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2" data-ar="C# التأسيسية مع مايكروسوفت" data-en="Foundational C# with Microsoft">Foundational C# with Microsoft [cite: 4]</h3>
-                        <p class="text-[var(--text-secondary)]" data-ar="مايكروسوفت و freeCodeCamp" data-en="Microsoft & freeCodeCamp">Microsoft & freeCodeCamp [cite: 4]</p>
+                        <h3 class="font-bold text-xl mb-2" data-ar="أساسيات #C مع مايكروسوفت" data-en="Foundational C# with Microsoft">Foundational C# with Microsoft</h3>
+                        <p class="text-[var(--text-secondary)]" data-ar="Microsoft و freeCodeCamp" data-en="Microsoft & freeCodeCamp">Microsoft & freeCodeCamp</p>
                     </div>
                 </div>
 
                 <div class="rounded-lg overflow-hidden border border-[var(--border-color)] bg-[var(--bg-card)] card-glow">
                     <img src="./images/certs/Meta.png" alt="Meta Social Media Advertising Certificate" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2" data-ar="أساسيات إعلانات وسائل التواصل الاجتماعي" data-en="Fundamentals of Social Media Advertising">Fundamentals of Social Media Advertising [cite: 3]</h3>
-                        <p class="text-[var(--text-secondary)]" data-ar="Meta" data-en="Meta">Meta [cite: 3]</p>
+                        <h3 class="font-bold text-xl mb-2" data-ar="أساسيات الإعلان عبر وسائل التواصل" data-en="Fundamentals of Social Media Advertising">Fundamentals of Social Media Advertising</h3>
+                        <p class="text-[var(--text-secondary)]" data-ar="Meta" data-en="Meta">Meta</p>
                     </div>
                 </div>
 
                 <div class="rounded-lg overflow-hidden border border-[var(--border-color)] bg-[var(--bg-card)] card-glow">
                     <img src="./images/certs/NVIDIA.png" alt="NVIDIA CUDA Certificate" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2" data-ar="أساسيات الحوسبة المسرعة باستخدام CUDA C/C++" data-en="Fundamentals of Accelerated Computing with CUDA C/C++">Fundamentals of Accelerated Computing with CUDA C/C++ [cite: 6]</h3>
-                        <p class="text-[var(--text-secondary)]" data-ar="معهد NVIDIA للتعلم العميق" data-en="NVIDIA Deep Learning Institute">NVIDIA Deep Learning Institute [cite: 6]</p>
+                        <h3 class="font-bold text-xl mb-2" data-ar="أساسيات الحوسبة المسرعة بـ CUDA" data-en="Fundamentals of Accelerated Computing with CUDA C/C++">Fundamentals of Accelerated Computing with CUDA C/C++</h3>
+                        <p class="text-[var(--text-secondary)]" data-ar="NVIDIA معهد التعلم العميق" data-en="NVIDIA Deep Learning Institute">NVIDIA Deep Learning Institute</p>
                     </div>
                 </div>
 
                 <div class="rounded-lg overflow-hidden border border-[var(--border-color)] bg-[var(--bg-card)] card-glow">
                     <img src="./images/certs/HP.png" alt="HP Cybersecurity Certificate" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2" data-ar="مقدمة للتوعية بالأمن السيبراني" data-en="Introduction to Cybersecurity Awareness">مقدمة للتوعية بالأمن السيبراني [cite: 2]</h3>
-                        <p class="text-[var(--text-secondary)]" data-ar="HP LIFE" data-en="HP LIFE">HP LIFE [cite: 2]</p>
+                        <h3 class="font-bold text-xl mb-2" data-ar="مقدمة في الوعي بالأمن السيبراني" data-en="Introduction to Cybersecurity Awareness">Introduction to Cybersecurity Awareness</h3>
+                        <p class="text-[var(--text-secondary)]" data-ar="HP LIFE" data-en="HP LIFE">HP LIFE</p>
                     </div>
                 </div>
                 
                 <div class="rounded-lg overflow-hidden border border-[var(--border-color)] bg-[var(--bg-card)] card-glow">
                     <img src="./images/certs/microsoft new.png" alt="Microsoft Azure Administrator Certificate" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2" data-ar="Microsoft Certified: Azure Administrator Associate" data-en="Microsoft Certified: Azure Administrator Associate">Microsoft Certified: Azure Administrator Associate [cite: 7]</h3>
-                        <p class="text-[var(--text-secondary)]" data-ar="Microsoft" data-en="Microsoft">Microsoft [cite: 7]</p>
+                        <h3 class="font-bold text-xl mb-2" data-ar="مايكروسوفت معتمد: مسؤول Azure" data-en="Microsoft Certified: Azure Administrator Associate">Microsoft Certified: Azure Administrator Associate</h3>
+                        <p class="text-[var(--text-secondary)]" data-ar="Microsoft" data-en="Microsoft">Microsoft</p>
                     </div>
                 </div>
 
                 <div class="rounded-lg overflow-hidden border border-[var(--border-color)] bg-[var(--bg-card)] card-glow">
                     <img src="./images/certs/MARKTING.jpg" alt="AlqadasiBiz Social Media Marketing Certificate" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2" data-ar="التسويق عبر وسائل التواصل الاجتماعي" data-en="Social Media Marketing">Social Media Marketing [cite: 8]</h3>
-                        <p class="text-[var(--text-secondary)]" data-ar="AlqadasiBiz" data-en="AlqadasiBiz">AlqadasiBiz [cite: 8]</p>
+                        <h3 class="font-bold text-xl mb-2" data-ar="التسويق عبر شبكات التواصل" data-en="Social Media Marketing">Social Media Marketing</h3>
+                        <p class="text-[var(--text-secondary)]" data-ar="AlqadasiBiz" data-en="AlqadasiBiz">AlqadasiBiz</p>
                     </div>
                 </div>
 
                 <div class="rounded-lg overflow-hidden border border-[var(--border-color)] bg-[var(--bg-card)] card-glow">
                     <img src="./images/certs/CANVA.png" alt="Canva Internship Certificate" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2" data-ar="برنامج تدريب داخلي لمدة ثلاثة أشهر" data-en="Three Months Internship Program">Three Months Internship Program [cite: 1]</h3>
-                        <p class="text-[var(--text-secondary)]" data-ar="Canva" data-en="Canva">Canva [cite: 1]</p>
+                        <h3 class="font-bold text-xl mb-2" data-ar="برنامج تدريب داخلي لمدة ثلاثة أشهر" data-en="Three Months Internship Program">Three Months Internship Program</h3>
+                        <p class="text-[var(--text-secondary)]" data-ar="Canva" data-en="Canva">Canva</p>
                     </div>
                 </div>
 
                 <div class="rounded-lg overflow-hidden border border-[var(--border-color)] bg-[var(--bg-card)] card-glow">
                     <img src="./images/certs/UCDAVIS.png" alt="UC Davis Materials Science Certificate" class="w-full h-48 object-cover">
                     <div class="p-6">
-                        <h3 class="font-bold text-xl mb-2" data-ar="علم المواد: 10 أشياء يجب أن يعرفها كل مهندس" data-en="Materials Science: 10 Things Every Engineer Should Know">Materials Science: 10 Things Every Engineer Should Know [cite: 5]</h3>
-                        <p class="text-[var(--text-secondary)]" data-ar="جامعة كاليفورنيا، ديفيس" data-en="University of California, Davis">University of California, Davis [cite: 5]</p>
+                        <h3 class="font-bold text-xl mb-2" data-ar="علم المواد: 10 مفاهيم لكل مهندس" data-en="Materials Science: 10 Things Every Engineer Should Know">Materials Science: 10 Things Every Engineer Should Know</h3>
+                        <p class="text-[var(--text-secondary)]" data-ar="جامعة كاليفورنيا ديفيس" data-en="University of California, Davis">University of California, Davis</p>
                     </div>
                 </div>
                 
@@ -362,24 +387,24 @@
         <div class="container mx-auto text-center">
             <h2 class="text-3xl font-bold" data-ar="المهارات التقنية" data-en="Technical Skills">المهارات التقنية</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6 max-w-7xl mx-auto mt-12">
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-python text-5xl text-yellow-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Python</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-java text-5xl text-red-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Java</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-js-square text-5xl text-yellow-300 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">JavaScript</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-mobile-alt text-5xl text-blue-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Flutter & Dart</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-php text-5xl text-indigo-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">PHP</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-database text-5xl text-green-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">MySQL</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-html5 text-5xl text-orange-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">HTML5</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-css3-alt text-5xl text-blue-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">CSS3</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-code text-5xl text-purple-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">C# & C++</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-swift text-5xl text-orange-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Swift & Kotlin</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-linux text-5xl text-white mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Linux</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-windows text-5xl text-sky-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Windows Server</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-network-wired text-5xl text-gray-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Cisco CCNA/CCNP</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-shield-alt text-5xl text-green-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Network Security</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-user-secret text-5xl text-red-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Ethical Hacking</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-microchip text-5xl text-teal-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">CompTIA A+/Net+</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-aws text-5xl text-amber-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">AWS Cloud</h3></div>
-                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-microsoft text-5xl text-blue-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg">Microsoft AZ-900</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-python text-5xl text-yellow-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="بايثون" data-en="Python">بايثون</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-java text-5xl text-red-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="جافا" data-en="Java">جافا</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-js-square text-5xl text-yellow-300 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="جافاسكربت" data-en="JavaScript">جافاسكربت</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-mobile-alt text-5xl text-blue-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="فلاتر و دارت" data-en="Flutter & Dart">فلاتر و دارت</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-php text-5xl text-indigo-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="بي إتش بي" data-en="PHP">بي إتش بي</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-database text-5xl text-green-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="ماي إس كيو إل" data-en="MySQL">ماي إس كيو إل</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-html5 text-5xl text-orange-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="HTML5" data-en="HTML5">HTML5</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-css3-alt text-5xl text-blue-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="CSS3" data-en="CSS3">CSS3</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-code text-5xl text-purple-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="سي شارب و سي بلس بلس" data-en="C# & C++">سي شارب و سي بلس بلس</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-swift text-5xl text-orange-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="سويفت و كوتلن" data-en="Swift & Kotlin">سويفت و كوتلن</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-linux text-5xl text-white mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="لينُكس" data-en="Linux">لينُكس</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-windows text-5xl text-sky-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="ويندوز سيرفر" data-en="Windows Server">ويندوز سيرفر</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-network-wired text-5xl text-gray-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="سيسكو CCNA/CCNP" data-en="Cisco CCNA/CCNP">سيسكو CCNA/CCNP</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-shield-alt text-5xl text-green-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="أمن الشبكات" data-en="Network Security">أمن الشبكات</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-user-secret text-5xl text-red-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="اختبار اختراق أخلاقي" data-en="Ethical Hacking">اختبار اختراق أخلاقي</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fas fa-microchip text-5xl text-teal-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="كومبتيا A+ / نتورك+" data-en="CompTIA A+/Net+">كومبتيا A+ / نتورك+</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-aws text-5xl text-amber-500 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="سحابة AWS" data-en="AWS Cloud">سحابة AWS</h3></div>
+                <div class="p-4 rounded-lg text-center group card-glow border border-[var(--border-color)] bg-[var(--bg-card)]"><i class="fab fa-microsoft text-5xl text-blue-400 mb-3 transition-transform duration-300 group-hover:scale-110"></i><h3 class="font-semibold text-lg" data-ar="مايكروسوفت AZ-900" data-en="Microsoft AZ-900">مايكروسوفت AZ-900</h3></div>
             </div>
         </div>
     </section>
@@ -436,8 +461,8 @@
                         <i class="fab fa-telegram fa-8x text-blue-400 mb-6"></i>
                         <h4 class="font-bold text-xl mb-4" data-ar="انضم إلى مجتمعنا" data-en="Join Our Community">انضم إلى مجتمعنا</h4>
                         <div class="flex flex-col gap-3">
-                            <a href="https://t.me/SmartAnswerAi" target="_blank" rel="noopener" class="text-blue-300 hover:text-white transition">قناة الأخبار والعروض</a>
-                            <a href="https://t.me/SmartAnswerAigroup" target="_blank" rel="noopener" class="text-blue-300 hover:text-white transition">مجموعة الدعم والنقاش</a>
+                            <a href="https://t.me/SmartAnswerAi" target="_blank" rel="noopener" class="text-blue-300 hover:text-white transition" data-ar="قناة الأخبار والعروض" data-en="News & Offers Channel">قناة الأخبار والعروض</a>
+                            <a href="https://t.me/SmartAnswerAigroup" target="_blank" rel="noopener" class="text-blue-300 hover:text-white transition" data-ar="مجموعة الدعم والنقاش" data-en="Support & Discussion Group">مجموعة الدعم والنقاش</a>
                         </div>
                     </div>
                 </div>
@@ -482,7 +507,7 @@
                 <div class="flex items-center gap-4">
                     <a href="https://wa.me/201097585951" target="_blank" rel="noopener" class="flex items-center justify-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full transition duration-300">
                         <i class="fab fa-whatsapp text-2xl mr-2"></i>
-                        <span dir="ltr">WhatsApp</span>
+                        <span dir="ltr" data-ar="واتساب" data-en="WhatsApp">واتساب</span>
                     </a>
                 </div>
             </div>
@@ -519,6 +544,7 @@
         </div>
     </section>
 
+
     <footer class="bg-gray-900 py-6 border-t border-gray-700/50">
         <div class="container mx-auto text-center text-gray-500">
             <p data-ar="&copy; 2025 - جميع الحقوق محفوظة لـ يوسف الشريف" data-en="&copy; 2025 - All rights reserved to Yousef ElSherif">&copy; 2025 - جميع الحقوق محفوظة لـ يوسف الشريف</p>
@@ -540,6 +566,7 @@
                         events: {
                             onHover: { enable: true, mode: "repulse" },
                             onClick: { enable: true, mode: "push" }
+
                         },
                         modes: {
                             repulse: { distance: 100, duration: 0.4 },
@@ -580,14 +607,18 @@
         function setLang(lang) {
             document.documentElement.lang = lang;
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-            document.querySelectorAll('[data-ar]').forEach(el => {
-                const text = el.getAttribute(lang === 'ar' ? 'data-ar' : 'data-en');
-                if (text) {
-                    // This check prevents accidentally overwriting complex inner HTML
-                    if (el.children.length === 0 || el.classList.contains('hero-buttons')) {
-                         el.innerHTML = text;
-                    }
+
+            // Replace inner HTML for all translatable elements (allow embedded tags inside translation strings)
+            document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+                const content = el.getAttribute(lang === 'ar' ? 'data-ar' : 'data-en');
+                if (content !== null) {
+                    el.innerHTML = content;
                 }
+            });
+
+            // Update alt attributes for images if bilingual alt provided
+            document.querySelectorAll('[data-ar-alt][data-en-alt]').forEach(img => {
+                img.alt = img.getAttribute(lang === 'ar' ? 'data-ar-alt' : 'data-en-alt');
             });
 
             const arBtn = document.getElementById('lang-ar');
